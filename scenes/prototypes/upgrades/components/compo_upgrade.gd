@@ -11,7 +11,7 @@ extends Control
 @export var button : Button
 
 ## Upgrade to display
-var upgrade : UP01ClickerUpgrade
+var upgrade : Upgrade
 
 
 func _ready() -> void:
