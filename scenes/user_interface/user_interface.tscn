@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cq1r8102whann"]
+[gd_scene load_steps=6 format=3 uid="uid://cq1r8102whann"]
 
 [ext_resource type="Script" path="res://scenes/user_interface/user_interface.gd" id="1_jhi6s"]
 [ext_resource type="PackedScene" uid="uid://b2hgq1ob5yrdg" path="res://scenes/prototypes/generator/prototype_generator.tscn" id="1_vknwc"]
 [ext_resource type="Script" path="res://scenes/user_interface/stardust_label.gd" id="2_fonhw"]
 [ext_resource type="PackedScene" uid="uid://bjrvfhxgk3bqn" path="res://scenes/prototypes/clicker/prototype_clicker.tscn" id="3_4y7n2"]
+[ext_resource type="PackedScene" uid="uid://g31tf8hwk8x0" path="res://scenes/prototypes/upgrades/prototype_upgrades.tscn" id="5_swm6q"]
 
 [node name="UserInterface" type="Control"]
 layout_mode = 3
@@ -61,6 +62,10 @@ text = "Prototype Generator"
 layout_mode = 2
 text = "Prototype Clicker"
 
+[node name="PrototypeUpgrades" type="LinkButton" parent="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Prototype Upgrades"
+
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/LeftPanel/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 16
@@ -115,5 +120,12 @@ layout_mode = 1
 user_interface = NodePath("../../..")
 view = 1
 
+[node name="PrototypeUpgrades" parent="HBoxContainer/MainView" node_paths=PackedStringArray("user_interface") instance=ExtResource("5_swm6q")]
+visible = false
+layout_mode = 1
+user_interface = NodePath("../../..")
+view = 2
+
 [connection signal="pressed" from="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer/PrototypeGeneratorLink" to="." method="_on_prototype_generator_link_pressed"]
 [connection signal="pressed" from="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer/PrototypeClickerLink" to="." method="_on_prototype_clicker_link_pressed"]
+[connection signal="pressed" from="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer/PrototypeUpgrades" to="." method="_on_prototype_upgrades_pressed"]
