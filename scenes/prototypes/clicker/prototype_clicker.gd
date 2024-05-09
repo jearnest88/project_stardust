@@ -10,8 +10,6 @@ extends Control
 ## View reference
 @export var view : UserInterface.Views
 
-## Current amount of stardust created
-var stardust : int = 0
 
 ## Initialize the label at launch
 func _ready() -> void:
@@ -23,13 +21,17 @@ func _ready() -> void:
 
 ## Create 1 stardust
 func create_stardust() -> void:
-	stardust += 1
+	Game.ref.data.stardust += 1
+
+## Temporary function to update the label
+func _process(_delta: float) -> void:
 	update_label_text()
 
 ## Update the text of the label to reflect a change in stardust
 func update_label_text() -> void:
-	label.text = "Stardust : %s" %stardust
-
+	label.text = "Stardust : %s" %Game.ref.data.stardust
+	
+	
 ## Triggered when the create stardust button is pressed
 func _on_button_pressed() -> void:
 	create_stardust()
